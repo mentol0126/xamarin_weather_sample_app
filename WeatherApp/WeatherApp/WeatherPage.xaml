@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       x:Class="WeatherApp.WeatherPage">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <Style x:Key="LabelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="#a8a8a8" />
+        <Setter Property="FontSize" Value="Small" />
+      </Style>
+      <Style x:Key="FieldStyle" TargetType="Label">
+        <Setter Property="TextColor">
+          <OnPlatform x:TypeArguments="Color" Android="Black" />
+        </Setter>
+        <Setter Property="FontSize" Value="Medium" />
+      </Style>
+      <Style x:Key="FieldView" TargetType="ContentView">
+        <Setter Property="Padding" Value="10,0,0,0" />
+      </Style>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+  <ContentPage.Content>
+    <ScrollView>
+      <StackLayout>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" BackgroundColor="#545454">
+          <StackLayout Padding="10,10,10,10" HorizontalOptions="Start">
+            <Label Text="Search by Zip Code" TextColor="White" FontAttributes="Bold" FontSize="Medium" />
+            <Label x:Name="ZipCodeLabel" Text="Zip Code" Style="{StaticResource LabelStyle}" />
+            <Entry x:Name="ZipCodeEntry" />
+          </StackLayout>
+
+          <StackLayout Padding="0,0,0,10" VerticalOptions="End">
+            <Button x:Name="GetWeatherBtn" Text="Get Weather" WidthRequest="185" BorderWidth="1" />
+          </StackLayout>
+        </StackLayout>
+
+        <StackLayout Padding="10,10,10,10" HorizontalOptions="Start">
+          <Label Text="Location" Style="{StaticResource LabelStyle}" />
+          <ContentView Style="{StaticResource FieldView}">
+            <Label Text="{Binding Title}" Style="{StaticResource FieldStyle}" />
+          </ContentView>
+          <Label Text="Temperature" Style="{StaticResource LabelStyle}" />
+          <ContentView Style="{StaticResource FieldView}">
+            <Label x:Name="TempLabel" Text="{Binding Temperature}" Style="{StaticResource FieldStyle}" />
+          </ContentView>
+          <Label Text="Wind Speed" Style="{StaticResource LabelStyle}" />
+          <ContentView Style="{StaticResource FieldView}">
+            <Label x:Name="WindLabel" Text="{Binding Wind}" Style="{StaticResource FieldStyle}" />
+          </ContentView>
+          <Label Text="Humidity" Style="{StaticResource LabelStyle}" />
+          <ContentView Style="{StaticResource FieldView}">
+            <Label x:Name="HumidityLabel" Text="{Binding Humidity}" Style="{StaticResource FieldStyle}" />
+          </ContentView>
+          <Label Text="Visibility" Style="{StaticResource LabelStyle}" />
+          <ContentView Style="{StaticResource FieldView}">
+            <Label x:Name="VisibilityLabel" Text="{Binding Visibility}" Style="{StaticResource FieldStyle}" />
+          </ContentView>
+          <Label Text="Time of Sunrise" Style="{StaticResource LabelStyle}" />
+          <ContentView Style="{StaticResource FieldView}">
+            <Label x:Name="SunriseLabel" Text="{Binding Sunrise}" Style="{StaticResource FieldStyle}" />
+          </ContentView>
+          <Label Text="Time of Sunset" Style="{StaticResource LabelStyle}" />
+          <ContentView Style="{StaticResource FieldView}">
+            <Label x:Name="SunsetLabel" Text="{Binding Sunset}" Style="{StaticResource FieldStyle}" />
+          </ContentView>
+        </StackLayout>
+      </StackLayout>
+    </ScrollView>
+  </ContentPage.Content>
+</ContentPage>
