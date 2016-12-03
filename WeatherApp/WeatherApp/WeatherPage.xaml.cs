@@ -25,6 +25,9 @@ namespace WeatherApp
             {
                 if (string.Equals(string.Empty, ZipCodeEntry.Text)) return;
 
+                // くるくる表示
+                Working.IsVisible = true;
+
                 // 郵便番号チェック
                 if (!RegOK)
                 {
@@ -34,6 +37,9 @@ namespace WeatherApp
 
                 var weather = await Core.GetWeather(ZipCodeEntry.Text);
                 BindingContext = weather;
+
+                // くるくる非表示
+                Working.IsVisible = false;
 
                 // ポップアップで結果を簡易表示
                 await DisplayAlert("Result", weather.Title + " " + weather.Temperature, "OK");

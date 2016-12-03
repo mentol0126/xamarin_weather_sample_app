@@ -40,6 +40,10 @@
           </StackLayout>
         </StackLayout>
 
+        <StackLayout x:Name="Working" Padding="10" IsVisible="False">
+          <ActivityIndicator x:Name="Indicator" IsRunning="True" />
+        </StackLayout>
+
         <StackLayout Padding="10,10,10,10" HorizontalOptions="Start">
           <Label Text="Location" Style="{StaticResource LabelStyle}" />
           <ContentView Style="{StaticResource FieldView}">
