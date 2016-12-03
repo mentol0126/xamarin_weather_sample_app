@@ -34,6 +34,10 @@ namespace WeatherApp
 
                 var weather = await Core.GetWeather(ZipCodeEntry.Text);
                 BindingContext = weather;
+
+                // ポップアップで結果を簡易表示
+                await DisplayAlert("Result", weather.Title + " " + weather.Temperature, "OK");
+
                 GetWeatherBtn.Text = "Search Again";
             };
         }
