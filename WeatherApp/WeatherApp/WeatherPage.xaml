@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:WeatherApp"
        x:Class="WeatherApp.WeatherPage">
   <ContentPage.Resources>
     <ResourceDictionary>
@@ -27,7 +28,11 @@
           <StackLayout Padding="10,10,10,10" HorizontalOptions="Start">
             <Label Text="Search by Zip Code" TextColor="White" FontAttributes="Bold" FontSize="Medium" />
             <Label x:Name="ZipCodeLabel" Text="Zip Code" Style="{StaticResource LabelStyle}" />
-            <Entry x:Name="ZipCodeEntry" />
+            <Entry x:Name="ZipCodeEntry" Placeholder="000-0000">
+              <Entry.Behaviors>
+                <local:ZipCodeBehavior RegexPattern="\d{3}-\d{4}" MaxLength="8" />
+              </Entry.Behaviors>
+            </Entry>
           </StackLayout>
 
           <StackLayout Padding="0,0,0,10" VerticalOptions="End">

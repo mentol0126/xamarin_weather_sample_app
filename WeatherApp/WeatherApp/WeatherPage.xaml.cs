@@ -10,6 +10,8 @@ namespace WeatherApp
 {
     public partial class WeatherPage : ContentPage
     {
+        static public bool RegOK { get; set; } = false;
+
         public WeatherPage()
         {
             InitializeComponent();
@@ -22,6 +24,13 @@ namespace WeatherApp
             GetWeatherBtn.Clicked += async (sender, e) =>
             {
                 if (string.Equals(string.Empty, ZipCodeEntry.Text)) return;
+
+                // 郵便番号チェック
+                if (!RegOK)
+                {
+                    GetWeatherBtn.Text = "Re: Input";
+                    return;
+                }
 
                 var weather = await Core.GetWeather(ZipCodeEntry.Text);
                 BindingContext = weather;

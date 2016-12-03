@@ -45,6 +45,7 @@
     <Compile Include="WeatherPage.xaml.cs">
       <DependentUpon>WeatherPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ZipCodeBehavior.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml">
