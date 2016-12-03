@@ -17,6 +17,8 @@ namespace WeatherApp
             Title = "Sample Weather App";
             BindingContext = new Weather();
 
+            ZipCodeEntry.Text = string.Empty;
+
             GetWeatherBtn.Clicked += async (sender, e) =>
             {
                 if (string.Equals(string.Empty, ZipCodeEntry.Text)) return;

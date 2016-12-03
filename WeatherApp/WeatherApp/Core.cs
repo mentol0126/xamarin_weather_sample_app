@@ -10,13 +10,13 @@ namespace WeatherApp
     {
         public static async Task<Weather> GetWeather(string zipCode)
         {
-            const string key = "Set regist code";
+            const string key = "";
             var queryString = 
                 "http://api.openweathermap.org/data/2.5/weather?zip=" 
-                + zipCode + ",us&appid=" + key + "&units=imperial";
+                + zipCode + ",jp&appid=" + key + "&units=imperial";
 
             dynamic results = await DetaService.GetDataFromService(queryString);
-            if (results["weather"] == null) return null;
+            if (results == null || results["weather"] == null) return null;
 
             var weather = new Weather() { };
             weather.Title = (string)results["name"];
