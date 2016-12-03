@@ -18,9 +18,12 @@ namespace WeatherApp
             dynamic results = await DetaService.GetDataFromService(queryString);
             if (results == null || results["weather"] == null) return null;
 
+            // 華氏を摂氏に変換（文字列として保存）
+            var temperature = ((double.Parse((string) results["main"]["temp"]) - 32.0) / 1.8).ToString();
+
             var weather = new Weather() { };
             weather.Title = (string)results["name"];
-            weather.Temperature = (string)results["main"]["temp"] + "F";
+            weather.Temperature = temperature + "℃";
             weather.Wind = (string)results["wind"]["speed"] + "mph";
             weather.Humidity = (string)results["main"]["humidity"] + "%";
             weather.Visibility = (string)results["weather"][0]["main"];
