@@ -10,6 +10,7 @@ namespace WeatherApp
     {
         public static async Task<Weather> GetWeather(string zipCode)
         {
+            var key = "5436b0d0f323e585994ea87f67767d5d";
             var queryString = 
                 "http://api.openweathermap.org/data/2.5/weather?zip=" 
                 + zipCode + ",jp&appid=" + key + "&units=imperial";
@@ -17,8 +18,8 @@ namespace WeatherApp
             dynamic results = await DetaService.GetDataFromService(queryString);
             if (results?["weather"] == null) return null;
 
-            // 華氏を摂氏に変換（文字列として保存）
-            var temperature = ((double.Parse((string) results["main"]["temp"]) - 32.0) / 1.8).ToString();
+            // 華氏を摂氏に変換（文字列として保存）（形式：xx.x）
+            var temperature = ((double.Parse((string) results["main"]["temp"]) - 32.0) / 1.8).ToString("F1");
 
             var weather = new Weather() { };
             weather.Title = (string)results["name"];
